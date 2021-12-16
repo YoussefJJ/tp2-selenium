@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 /**
  * Hello world!
  *
@@ -20,7 +22,7 @@ public class App
     public static void main( String[] args ) throws InterruptedException
     {
     	//Initializing Chrome Driver
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Youssef\\Documents\\TP Selenium\\chromedriver.exe");
+    	WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         
         //Configuring driver timeouts
@@ -44,9 +46,9 @@ public class App
         Thread.sleep(1000);
         
         //Fill the field with their respective credentials
-        driver.findElement(By.name("email")).sendKeys("kileni.touhemi@gmail.com");
+        driver.findElement(By.name("email")).sendKeys("tp.selenium@gmail.com");
         Thread.sleep(1000);
-        driver.findElement(By.name("password")).sendKeys("hammachrab");
+        driver.findElement(By.name("password")).sendKeys("tpselenium");
         Thread.sleep(1000);
         
         //Click on Login
@@ -81,6 +83,7 @@ public class App
         driver.findElement(By.xpath("//*[@id=\"main\"]/div/div/div[3]/div/a")).click();
         
         //Exit Chrome Driver
+        Thread.sleep(5000);
         driver.quit();
     }
 }
